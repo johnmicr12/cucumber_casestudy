@@ -7,12 +7,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 import Browsers.Drivers;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class DefineStep_123 {
+public class StepDef {
 public static WebDriver driver;
 @Given("Sign Up")
 public void sign_Up() {
@@ -27,8 +28,7 @@ public void sign_Up() {
 public void enter_Username_as(String username) {
     // Write code here that turns the phrase above into concrete actions
    // throw new cucumber.api.PendingException();
- WebDriverWait wait=new WebDriverWait(driver, 20);
- wait.until(ExpectedConditions.presenceOfElementLocated(By.id("userName")));
+ username="rttyyuuihjuiehnd";
  driver.findElement(By.id("userName")).sendKeys(username);
 }
 
@@ -132,8 +132,7 @@ public void alex_has_registered_into_TestMeApp() {
 public void alex_login_with_below_set_of_and(String string, String string2) throws InterruptedException {
     // Write code here that turns the phrase above into concrete actions
     //throw new cucumber.api.PendingException();
-Thread.sleep(2000);
-System.out.println(string+string2);
+
 
 Thread.sleep(2000);
 driver.findElement(By.name("userName")).sendKeys(string);
@@ -144,32 +143,40 @@ driver.findElement(By.xpath("//input[@name='Login']")).click();
 @Then("Alex login successfully into TestMeApp")
 public void alex_login_successfully_into_TestMeApp() {
     // Write code here that turns the phrase above into concrete actions
-driver.close();
+driver.navigate().refresh();
 }
-
 
 
 @When("Alex search for a particular product like headphones")
-public void alex_search_for_a_particular_product_like_headphones() {
+public void alex_search_for_a_particular_product_like_headphones() throws InterruptedException {
     // Write code here that turns the phrase above into concrete actions
-   // throw new cucumber.api.PendingException();
-	/* WebElement search=driver.findElement(By.xpath("//input[@id='myInput']"));
+    //throw new cucumber.api.PendingException();
+	WebDriverWait wait=new WebDriverWait(driver,20);
+	  wait.until(ExpectedConditions.presenceOfElementLocated(By.id("myInput")));
 	 Actions act =new Actions(driver);
-	   act.keyDown(search, Keys.SHIFT).sendKeys("H").pause(3000).sendKeys("e").pause(3000).sendKeys("a").pause(3000).sendKeys("d").pause(3000).keyUp(Keys.SHIFT).perform();
-	   act.moveToElement(driver.findElement(By.xpath("//div[contains(text(),'Headphone')]"))).click().perform();
-	   driver.findElement(By.xpath("//form//input[@name='val']")).click();*/
-}
+	 WebElement search=driver.findElement(By.xpath("//input[@id='myInput']"));
 
+	 act.keyDown(search, Keys.SHIFT).sendKeys("h").pause(3000).sendKeys("e").pause(3000).sendKeys("a").pause(3000).sendKeys("d").pause(3000).keyUp(Keys.SHIFT).perform();
+	 Thread.sleep(5000);
+	 act.moveToElement(driver.findElement(By.xpath("//div[contains(text(),'Headphone')]"))).click().perform();
+	 driver.findElement(By.xpath("//form//input[@name='val']")).click();
+}
 @When("try to proceed to payment without adding any item in the cart")
 public void try_to_proceed_to_payment_without_adding_any_item_in_the_cart() {
     // Write code here that turns the phrase above into concrete actions
-  //  throw new cucumber.api.PendingException();
+    //throw new cucumber.api.PendingException();
 }
 
 @Then("TestMeApp doesn't display the cart icon")
 public void testmeapp_doesn_t_display_the_cart_icon() {
     // Write code here that turns the phrase above into concrete actions
-   // throw new cucumber.api.PendingException();
-}
+    //throw new cucumber.api.PendingException();
 
+try {
+ driver.findElement(By.partialLinkText("cart")).click();
+}
+ 
+ catch(Exception e) {
+System.out.println("There should be atleast one item in the cart:"+e);}
+}
 }

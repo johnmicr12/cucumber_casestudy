@@ -3,9 +3,9 @@ Feature: TestMeApp
   @casestudy1
   Scenario: 1.Register User
     Given Sign Up
-    And Enter Username as "tyuioplo"
-    And Enter Firstname as "aki"
-    And Enter LastName as "ras"
+    And Enter Username as ""
+    And Enter Firstname as "lalitha"
+    And Enter LastName as "Singh"
     And Enter Password as "password260"
     And Confirm your password "password260"
     And Select Gender as "female"
@@ -28,8 +28,8 @@ Feature: TestMeApp
       | lalitha  | password123 |
 
   @casestudy4
-  Scenario: The one where the user moves to cart without adding any item in it
+  Scenario: The one where user moves to cartwithout adding any item in it
     Given Alex has registered into TestMeApp
-    When Alex search for a particular product like headphones
+    When Alex search a particular product like headphones
     And try to proceed to payment without adding any item in the cart
     Then TestMeApp doesn't display the cart icon
